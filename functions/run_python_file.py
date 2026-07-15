@@ -39,7 +39,7 @@ schema_run_python_file = {
     "type": "function",
     "function": {
         "name": "run_python_file",
-        "description": "Runs a specified python file relative to the working directory by constructing a command and subprocess, can also take optional arguments",
+        "description": "Runs a specified python file (script), can also take optional arguments",
         "parameters": {
             "type": "object",
             "properties": {
@@ -50,7 +50,7 @@ schema_run_python_file = {
                 "args": {
                     "type": "array",
                     "description": "The optional arguments' array that is used when constructing the command (Default is None)",
-                    "items":{
+                    "items": {
                         "type":"string",
                         "description": "The actual arguments to construct command"
                     }

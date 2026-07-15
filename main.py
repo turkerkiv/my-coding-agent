@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import argparse
 from prompts import system_prompt
-from call_function import avaiable_functions
+from call_function import avaiable_functions, call_function
 import json
 
 def main():
@@ -34,7 +34,7 @@ def main():
         model = "openrouter/free",
         messages = messages,
         tools=avaiable_functions,
-        temperature=0 # if more deterministic results needed
+        # temperature=0 # if more deterministic results needed
     )
 
     if response.usage is None:
@@ -44,8 +44,11 @@ def main():
 
     if message.tool_calls:
         for tool_call in message.tool_calls:
-            function_args = json.loads(tool_call.function.arguments or "{}")
-            print(f"Calling function: {tool_call.function.name}({function_args})")
+            result_message = call_function(tool_call, verbose=True)
+            if not result_message["content"]:
+                raise Exception("Error getting result content of the function run")
+        if args.verbose:
+            print(f"-> {result_message['content']}")
     else:    
         if args.verbose:
             print(f"User prompt: {args.user_prompt}")
