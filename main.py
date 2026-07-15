@@ -34,7 +34,7 @@ def main():
         model = "openrouter/free",
         messages = messages,
         tools=avaiable_functions,
-        # temperature=0 if need more deterministic results
+        temperature=0 # if more deterministic results needed
     )
 
     if response.usage is None:
