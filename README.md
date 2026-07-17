@@ -1,5 +1,5 @@
 # My Coding Agent
-- Hi. I made this coding agent to understand how agents made with tutorials.
+- Hi. I made this coding agent with tutorials to understand how agents made.
 - Currently agent can use 4 functions with tool calls which are get_director_files, get_file_content, write_file, run_python_file.
 - Also agent can answer your questions with/without tool calls. 
 - There is a loop and agent decides what to do.  
